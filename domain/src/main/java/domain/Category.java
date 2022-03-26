@@ -5,7 +5,7 @@ import java.util.List;
 
 public abstract class Category {
     private String nameCategory;
-    private List<Product> productList = new ArrayList<>();
+    private  List<Product> productList = new ArrayList<>();
 
     public Category(String nameCategory) {
         this.nameCategory = nameCategory;

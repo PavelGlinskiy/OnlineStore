@@ -39,4 +39,5 @@ public class Product {
     public String toString() {
         return "\t\tProduct Name: \"" + nameProduct + "\". Price: " + price + "$. Rate: " + rate + "$.\n" ;
     }
+
 }
