@@ -38,7 +38,6 @@ public class RandomStorePopulator {
 
     private static Map<Category, Integer> createProductMap(){
         Map<Category, Integer> productMap = new HashMap<>();
-
         Reflections reflections = new Reflections("domain.productCategories", new SubTypesScanner());
         Set<Class<? extends Category>> subTypes = reflections.getSubTypesOf(Category.class);
 
@@ -46,7 +45,10 @@ public class RandomStorePopulator {
             try {
                 Random random = new Random();
                 productMap.put(type.getConstructor().newInstance(), random.nextInt(10)+1);
-            } catch (InstantiationException | InvocationTargetException | NoSuchMethodException | IllegalAccessException e) {
+            } catch (InstantiationException
+                    | InvocationTargetException
+                    | NoSuchMethodException
+                    | IllegalAccessException e) {
                 e.printStackTrace();
             }
         }
