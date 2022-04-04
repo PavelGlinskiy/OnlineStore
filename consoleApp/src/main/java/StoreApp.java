@@ -28,9 +28,10 @@ public class StoreApp {
 
     public static void menuPrint(){
         System.out.println("\n" + "### МЕНЮ ###");
-        System.out.println("1. Sorting");
-        System.out.println("2. Top");
-        System.out.println("3. Exit");
+        System.out.println("1. Print Store");
+        System.out.println("2. Sorting");
+        System.out.println("3. Top");
+        System.out.println("4. Exit");
     }
 
     public static void startMenu() throws ParserConfigurationException, IOException, SAXException {
@@ -45,11 +46,14 @@ public class StoreApp {
     public static void chooseMenu(int numMenu) throws ParserConfigurationException, SAXException, IOException {
         switch (numMenu) {
             case 1 :
+                Store.printStore();
+                break;
+            case 2 :
                 startMenuSort();
                 break;
-            case 2 : Store.topProducts();
+            case 3 : Store.topProducts();
                 break;
-            case 3: System.exit(0);
+            case 4: System.exit(0);
             default:
                 System.out.println("Не правильно выбран пункт");
         }
@@ -69,6 +73,7 @@ public class StoreApp {
         menuSort();
         while (userInput.hasNext()){
             chooseMenuSort(userInput.nextInt());
+            menuSort();
         }
     }
 
