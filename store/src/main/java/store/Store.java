@@ -9,7 +9,7 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 public class Store {
-    private static Map<Category, List<Product>> storeMap = new HashMap<>();
+    public static Map<Category, List<Product>> storeMap = new HashMap<>();
     private String storeName;
     private static volatile Store store;
 
@@ -67,6 +67,7 @@ public class Store {
     }
 
     public static void topProducts(){
+        System.out.println(Thread.currentThread().getName());
         List<Product> products = new ArrayList<>();
         for (Map.Entry<Category, List<Product>> entry : storeMap.entrySet()){
             List<Product> list = entry.getValue();

@@ -55,6 +55,7 @@ public class RandomStorePopulator {
                    System.out.println("Невозможно создать продукт");
                }
             }
+
             store.getStoreMap().put(item.getKey(),productList);
         }
         return store;
