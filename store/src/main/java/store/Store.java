@@ -9,15 +9,15 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 public class Store {
-    private static Map<Category, List<Product>> storeMap = new HashMap<>();
+    public static Map<Category, List<Product>> storeMap = new HashMap<>();
     private String storeName;
+    private static volatile Store store;
 
-    public Store(String storeName) {
+    private Store(String storeName) {
         this.storeName = storeName;
     }
 
-    public void printStore(String name){
-        System.out.println("\n" + this);
+    public static void printStore(){
         for (Map.Entry<Category, List<Product>> entry : storeMap.entrySet()) {
             System.out.print(entry.getKey() + " " + entry.getValue().toString()
                     .replace("[", "")
@@ -67,6 +67,7 @@ public class Store {
     }
 
     public static void topProducts(){
+        System.out.println(Thread.currentThread().getName());
         List<Product> products = new ArrayList<>();
         for (Map.Entry<Category, List<Product>> entry : storeMap.entrySet()){
             List<Product> list = entry.getValue();
@@ -79,6 +80,19 @@ public class Store {
                     .replace("[", "")
                     .replace("]", "")
                     .replace(",", ""));
+        }
+    }
+
+    public static Store createStore(String storeName){
+        Store result = store;
+        if (result != null){
+            return result;
+        }
+        synchronized (Store.class){
+            if (store == null){
+                store = new Store(storeName);
+            }
+            return store;
         }
     }
 

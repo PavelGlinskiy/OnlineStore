@@ -1,15 +1,19 @@
 package domain;
 
-public class Product {
+import com.github.javafaker.Faker;
+
+public abstract class Product {
     private String nameProduct;
     private double price;
     private double rate;
+    protected Faker faker = new Faker();
 
     public Product(String nameProduct, double price, double rate) {
         this.nameProduct = nameProduct;
         this.price = price;
         this.rate = rate;
     }
+
 
     public String getNameProduct() {
         return nameProduct;
