@@ -67,20 +67,19 @@ public class Store {
     }
 
     public static void topProducts(){
-        System.out.println(Thread.currentThread().getName());
         List<Product> products = new ArrayList<>();
         for (Map.Entry<Category, List<Product>> entry : storeMap.entrySet()){
             List<Product> list = entry.getValue();
             products.addAll(list);
-            List<Product> sortedProducts = list.stream()
-                    .sorted((o1, o2) -> Double.compare(o2.getPrice(), o1.getPrice()))
-                    .skip(products.size()-5)
-                    .collect(Collectors.toList());
-            System.out.println(sortedProducts.toString()
-                    .replace("[", "")
-                    .replace("]", "")
-                    .replace(",", ""));
         }
+        List<Product> sortedProducts = products.stream()
+                .sorted((o1, o2) -> Double.compare(o2.getPrice(), o1.getPrice()))
+                .skip(products.size()-5)
+                .collect(Collectors.toList());
+        System.out.println(sortedProducts.toString()
+                .replace("[", "")
+                .replace("]", "")
+                .replace(",", ""));
     }
 
     public static Store createStore(String storeName){
