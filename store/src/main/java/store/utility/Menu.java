@@ -33,7 +33,7 @@ public class Menu {
     public static void startMenu() throws ParserConfigurationException, IOException, SAXException {
         Timer timer = new Timer();
         TimerForClear timerForClear = new TimerForClear();
-        timer.schedule(timerForClear,0, 120000);
+        timer.schedule(timerForClear,0, 50000);
         Scanner userInput = new Scanner(System.in);
         menuPrint();
         while (userInput.hasNext()){
@@ -118,7 +118,7 @@ public class Menu {
         Scanner userInput = new Scanner(System.in);
         Thread t = new Thread(new ThreadByPurchase(userInput.nextLine()));
 
-        long time = 1 + (long) (Math.random()*30);
+        long time = 1 + (long) (Math.random()*10);
         try {
             Thread.sleep(time*1000);
         } catch (InterruptedException e) {
